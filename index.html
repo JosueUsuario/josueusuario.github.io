@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta Vehicular - Josue</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e5f9f1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      min-height: 100vh;
+      padding-top: 3rem;
+    }
+    .app-container {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    h1 {
+      color: #24c276;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 1rem;
+      background-color: #24c276;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1fa864;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <h1>Consulta Tu Vehículo</h1>
+    <input type="text" id="placa" placeholder="Ingresa tu placa (ej. ABC123)" />
+    <button onclick="redirigirSATLima()">🔎 SAT Lima</button>
+    <button onclick="redirigirSATCallao()">🔎 SAT Callao</button>
+    <button onclick="redirigirSUNARP()">🔎 SUNARP</button>
+    <button onclick="redirigirSOAT()">🔎 SOAT y Revisión Técnica</button>
+    <button onclick="contactarWhatsApp()">📲 Asesoría por WhatsApp</button>
+  </div>
+
+  <script>
+    function getPlaca() {
+      const placa = document.getElementById('placa').value.trim().toUpperCase();
+      if (!placa) {
+        alert("Por favor ingresa una placa válida");
+        throw new Error("Placa vacía");
+      }
+      return placa;
+    }
+    function redirigirSATLima() {
+      const placa = getPlaca();
+      window.open(https://www.sat.gob.pe/Websitev9/vehiculos/consultaplaca?placa=${placa}, '_blank');
+    }
+    function redirigirSATCallao() {
+      window.open('https://sistemas2.municallao.gob.pe/ords/f?p=124:4', '_blank');
+    }
+    function redirigirSUNARP() {
+      window.open('https://www.sunarp.gob.pe/ConsultaVehicular/', '_blank');
+    }
+    function redirigirSOAT() {
+      window.open('https://www.apeseg.org.pe/consulta-soat/', '_blank');
+    }
+    function contactarWhatsApp() {
+      const placa = document.getElementById('placa').value.trim().toUpperCase();
+      const mensaje = Hola Josue, quiero consultar mi vehículo con placa: ${placa};
+      window.open(https://wa.me/51994080928?text=${encodeURIComponent(mensaje)}, '_blank');
+    }
+  </script>
+</body>
+</html>
